@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Teste_BackEnd.Interfaces.Services;
-using Teste_BackEnd.Models;
 using Teste_BackEnd.Services;
 
 namespace Teste_BackEnd.Controllers
