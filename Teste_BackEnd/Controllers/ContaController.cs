@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Teste_BackEnd.Interfaces.Services;
 using Teste_BackEnd.Models;
-using Teste_BackEnd.Services;
 
 namespace Teste_BackEnd.Controllers
 {
@@ -45,9 +45,17 @@ namespace Teste_BackEnd.Controllers
             {
                 return BadRequest(e.Message);
             }
-
         }
 
-       
+        [HttpGet("/obtersaldo")]
+        [Authorize]
+        public async Task<ActionResult> ObterSaldo()
+        {
+            var test = User.Identity.Name;
+
+            return Ok();
+        }
+
+
     }
 }
