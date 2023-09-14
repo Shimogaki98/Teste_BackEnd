@@ -26,6 +26,11 @@ namespace Teste_BackEnd.Repository
             return await _dbContext.Contas.ToListAsync();
         }
 
+        public async Task<Conta> GetByUserAsync(string email, string senha)
+        {
+            return await _dbContext.Contas.FirstOrDefaultAsync(c => c.Email == email && c.Senha == senha);
+        }
+
         public async Task<bool> VerificarSeNumeroFoiUtilizado(int num)
         {
             return await _dbContext.Contas.AnyAsync(x => x.Numero == num);

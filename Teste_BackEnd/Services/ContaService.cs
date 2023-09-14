@@ -27,6 +27,11 @@ namespace Teste_BackEnd.Services
             return await _contaRepository.GetAsync();
         }
 
+        public async Task<Conta> GetByUserAsync(string email, string senha)
+        {
+            return await _contaRepository.GetByUserAsync(email, senha);
+        }
+
         private async Task<bool> VerificarSeNumeroFoiUtilizado(int num)
         {
             return await _contaRepository.VerificarSeNumeroFoiUtilizado(num);

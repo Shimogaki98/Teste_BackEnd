@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Teste_BackEnd.Interfaces.Services;
 using Teste_BackEnd.Models;
 
@@ -45,6 +44,19 @@ namespace Teste_BackEnd.Controllers
             {
                 return BadRequest(e.Message);
             }
+
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<dynamic>> Login(string email, string senha)
+        {
+            var usuario = await _contaService.GetByUserAsync(email, senha);
+
+            if (usuario == null)
+                return BadRequest(new { Message = "Usuário ou senha inválidos" });
+
+
+            return Ok();
 
         }
 
