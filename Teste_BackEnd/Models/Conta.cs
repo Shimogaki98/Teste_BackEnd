@@ -8,13 +8,13 @@ namespace Teste_BackEnd.Models
         public int Id { get; set; }
 
         [MaxLength(40)]
-        public string Nome { get; set; }
+        public string Nome { get; set; } = string.Empty;
 
         [MaxLength(40)]
-        public string Email { get; set; }
+        public string Email { get; set; } = string.Empty;
 
         [Required]
-        public string Senha { get; set; }
+        public string Senha { get; set; } = string.Empty;
         public int Numero { get; set; }
         public int Saldo { get; set; }
 
