@@ -7,5 +7,6 @@ namespace Teste_BackEnd.Interfaces.Services
         Task<List<Conta>> CadastrarConta(Conta conta);
         Task<List<Conta>> Get();
         Task<Conta> GetByUserAsync(string email, string senha);
+        Task<string> ObterSaldo(string email);
     }
 }

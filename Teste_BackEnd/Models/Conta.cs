@@ -16,14 +16,8 @@ namespace Teste_BackEnd.Models
         [Required]
         public string Senha { get; set; } = string.Empty;
         public int Numero { get; set; }
-        public int Saldo { get; set; }
+        public decimal Saldo { get; set; }
 
-        public Conta(string nome, string email, string senha)
-        {
-            Nome = nome;
-            Email = email;
-            Senha = senha;
-        }
     }
 
 

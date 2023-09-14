@@ -16,9 +16,7 @@ namespace Teste_BackEnd.Services
             {
                 Subject = new ClaimsIdentity(new[]
                 {
-                    new Claim(ClaimTypes.Name, conta.Nome), // User.Identity.Name
-                    new Claim(ClaimTypes.Email, conta.Email),
-                    new Claim("Saldo", conta.Saldo.ToString())
+                    new Claim(ClaimTypes.Name, conta.Email), // User.Identity.Name
                 }),
                 Expires = DateTime.UtcNow.AddHours(2),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key),

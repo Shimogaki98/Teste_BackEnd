@@ -8,5 +8,6 @@ namespace Teste_BackEnd.Interfaces.Repository
         Task<List<Conta>> GetAsync();
         Task<bool> VerificarSeNumeroFoiUtilizado(int num);
         Task<Conta> GetByUserAsync(string email, string senha);
+        Task<string> ObterSaldo(string email);
     }
 }

@@ -13,7 +13,6 @@ namespace Teste_BackEnd.Services
             _contaRepository = contaRepository;
         }
 
-
         public async Task<List<Conta>> CadastrarConta(Conta conta)
         {
             conta.Numero = await GerarNumeroConta();
@@ -52,6 +51,11 @@ namespace Teste_BackEnd.Services
             while (numeroUtilizado);
 
             return numeroConta;
+        }
+
+        public async Task<string> ObterSaldo(string email)
+        {
+            return await _contaRepository.ObterSaldo(email);
         }
     }
 }

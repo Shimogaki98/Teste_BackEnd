@@ -29,7 +29,6 @@ namespace Teste_BackEnd.Controllers
             {
                 return BadRequest(e.Message);
             }
-
         }
 
         [HttpPost]
@@ -51,11 +50,17 @@ namespace Teste_BackEnd.Controllers
         [Authorize]
         public async Task<ActionResult> ObterSaldo()
         {
-            var test = User.Identity.Name;
+            try
+            {
+                var saldo = await _contaService.ObterSaldo(User.Identity.Name);
 
-            return Ok();
+                return Ok(new { Message = $"Seu saldo é: R${saldo}" });
+
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
-
-
     }
 }
