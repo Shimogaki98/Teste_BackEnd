@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Teste_BackEnd.Interfaces.Services;
+using Teste_BackEnd.Models;
 
 namespace Teste_BackEnd.Controllers
 {
@@ -7,39 +9,44 @@ namespace Teste_BackEnd.Controllers
     [ApiController]
     public class ContaController : ControllerBase
     {
+        private readonly IContaService _contaService;
+
+        public ContaController(IContaService contaService)
+        {
+            _contaService = contaService;
+        }
+
         [HttpGet]
-        public IActionResult Get()
+        public async Task<ActionResult> Get()
         {
             try
             {
-
-                return Ok();
+                var contas = await _contaService.Get();
+                return Ok(contas);
             }
 
             catch (Exception e)
             {
-                return BadRequest();
+                return BadRequest(e.Message);
             }
 
         }
 
         [HttpPost]
-        public IActionResult CadastrarConta()
+        public async Task<ActionResult<List<Conta>>> CadastrarConta(Conta conta)
         {
             try
             {
+                var contas = await _contaService.CadastrarConta(conta);
 
-
-                return Ok(Ok());
+                return Ok(contas);
             }
             catch (Exception e)
             {
-                return BadRequest();
+                return BadRequest(e.Message);
             }
 
-
         }
-
 
     }
 }
