@@ -12,7 +12,7 @@ namespace Teste_BackEnd.Interfaces.Repository
         Task<Conta> GetByNumero(int numero);
         Task<Conta> GetByUserIdentity(string Id);
         Task SaveChangesAsync();
-
+        Task RegistrarTransacao(int entrada, int saida, decimal valor);
 
     }
 }

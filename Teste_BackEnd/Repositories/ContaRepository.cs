@@ -52,6 +52,17 @@ namespace Teste_BackEnd.Repository
             return await _dbContext.Contas.AnyAsync(x => x.Numero == num);
         }
 
+        public async Task RegistrarTransacao(int entrada, int saida, decimal valor)
+        {
+            var contaEntrada = new Transacao("Entrada", valor, entrada);
+            var contaSaida = new Transacao("Saída", valor, saida);
+
+            _dbContext.Transacoes.Add(contaEntrada);
+            _dbContext.Transacoes.Add(contaSaida);
+
+            await _dbContext.SaveChangesAsync();
+        }
+
         public async Task SaveChangesAsync()
         {
             await _dbContext.SaveChangesAsync();

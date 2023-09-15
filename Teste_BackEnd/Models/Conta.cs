@@ -18,6 +18,8 @@ namespace Teste_BackEnd.Models
         public int Numero { get; set; }
         public decimal Saldo { get; set; }
 
+        public List<Transacao> Extrato { get; set; } = new List<Transacao>();
+
     }
 
 

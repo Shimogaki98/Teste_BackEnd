@@ -8,5 +8,6 @@ namespace Teste_BackEnd.Data
         public DataContext(DbContextOptions<DataContext> options) : base(options) { }
 
         public DbSet<Conta> Contas { get; set; }
+        public DbSet<Transacao> Transacoes { get; set; }
     }
 }

@@ -74,7 +74,10 @@ namespace Teste_BackEnd.Services
             {
                 remetente.Saldo -= valor;
                 destinatario.Saldo += valor;
-                await _contaRepository.SaveChangesAsync();
+
+                await _contaRepository.RegistrarTransacao(dest, remetente.Numero, valor);
+
+                // await _contaRepository.SaveChangesAsync();
             }
 
             // buscar a conta remetente e criar validacoes, verificar se a conta destinatária existe

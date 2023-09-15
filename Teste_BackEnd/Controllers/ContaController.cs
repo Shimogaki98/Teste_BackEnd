@@ -79,5 +79,18 @@ namespace Teste_BackEnd.Controllers
                 return BadRequest(e.Message);
             }
         }
+
+        public async Task<ActionResult> Extrato()
+        {
+            try
+            {
+
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
     }
 }
