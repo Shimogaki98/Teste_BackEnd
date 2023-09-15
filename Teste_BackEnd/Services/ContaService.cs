@@ -76,8 +76,6 @@ namespace Teste_BackEnd.Services
                 destinatario.Saldo += valor;
 
                 await _contaRepository.RegistrarTransacao(dest, remetente.Numero, valor);
-
-                // await _contaRepository.SaveChangesAsync();
             }
 
             // buscar a conta remetente e criar validacoes, verificar se a conta destinatária existe
@@ -99,6 +97,11 @@ namespace Teste_BackEnd.Services
         public async Task<Conta> GetByUserIdentity(string Id)
         {
             return await _contaRepository.GetByUserIdentity(Id);
+        }
+
+        public async Task<List<Transacao>> GetExtratoAsync(int id)
+        {
+            return await _contaRepository.GetExtratoAsync(id);
         }
     }
 }

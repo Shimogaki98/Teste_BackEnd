@@ -11,5 +11,6 @@ namespace Teste_BackEnd.Interfaces.Services
         Task<Conta> GetByNumero(int numero);
         Task<Conta> GetByUserIdentity(string Id);
         Task<bool> Transferir(string rem, int dest, decimal valor);
+        Task<List<Transacao>> GetExtratoAsync(int id);
     }
 }

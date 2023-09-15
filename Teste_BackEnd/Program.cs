@@ -67,6 +67,13 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
+builder.Services.AddMvc().AddJsonOptions(options =>
+{
+    options.JsonSerializerOptions.PropertyNamingPolicy = null;
+    options.JsonSerializerOptions.MaxDepth = 64;
+    options.JsonSerializerOptions.IncludeFields = true;
+});
+
 // Add Repositories
 builder.Services.AddTransient<IContaRepository, ContaRepository>();
 

@@ -16,7 +16,7 @@ namespace Teste_BackEnd.Controllers
             _contaService = contaService;
         }
 
-        [HttpGet]
+        [HttpGet("/getcontas")]
         public async Task<ActionResult> Get()
         {
             try
@@ -31,7 +31,7 @@ namespace Teste_BackEnd.Controllers
             }
         }
 
-        [HttpPost]
+        [HttpPost("/cadastrarconta")]
         public async Task<ActionResult<List<Conta>>> CadastrarConta(Conta conta)
         {
             try
@@ -63,7 +63,7 @@ namespace Teste_BackEnd.Controllers
             }
         }
 
-        [HttpPost("transferir")]
+        [HttpPost("/transferir")]
         [Authorize]
         public async Task<ActionResult> Transferir(int dest, decimal valor)
         {
@@ -80,14 +80,19 @@ namespace Teste_BackEnd.Controllers
             }
         }
 
-        [HttpPost("extrato")]
+        [HttpPost("/extrato")]
         [Authorize]
         public async Task<ActionResult> Extrato()
         {
             try
             {
+                var conta = await _contaService.GetByUserIdentity(User.Identity.Name);
+                var extrato = _contaService.GetExtratoAsync(conta.Numero);
 
-                return Ok();
+                return Ok(new
+                {
+                    Transacoes = extrato
+                });
             }
             catch (Exception e)
             {

@@ -62,10 +62,15 @@ namespace Teste_BackEnd.Repository
 
             await _dbContext.SaveChangesAsync();
         }
+        public async Task<List<Transacao>> GetExtratoAsync(int id)
+        {
+            return await _dbContext.Transacoes.Where(t=> t.Conta == id).ToListAsync();
+        }
 
         public async Task SaveChangesAsync()
         {
             await _dbContext.SaveChangesAsync();
         }
+
     }
 }
