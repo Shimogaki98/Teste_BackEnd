@@ -80,6 +80,8 @@ namespace Teste_BackEnd.Controllers
             }
         }
 
+        [HttpPost("extrato")]
+        [Authorize]
         public async Task<ActionResult> Extrato()
         {
             try
