@@ -9,5 +9,10 @@ namespace Teste_BackEnd.Interfaces.Repository
         Task<bool> VerificarSeNumeroFoiUtilizado(int num);
         Task<Conta> GetByUserAsync(string email, string senha);
         Task<string> ObterSaldo(string email);
+        Task<Conta> GetByNumero(int numero);
+        Task<Conta> GetByUserIdentity(string Id);
+        Task SaveChangesAsync();
+
+
     }
 }

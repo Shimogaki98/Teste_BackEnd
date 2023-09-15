@@ -26,9 +26,19 @@ namespace Teste_BackEnd.Repository
             return await _dbContext.Contas.ToListAsync();
         }
 
+        public async Task<Conta> GetByNumero(int numero)
+        {
+            return await _dbContext.Contas.FirstOrDefaultAsync(c => c.Numero == numero);
+        }
+
         public async Task<Conta> GetByUserAsync(string email, string senha)
         {
             return await _dbContext.Contas.FirstOrDefaultAsync(c => c.Email == email && c.Senha == senha);
+        }
+
+        public async Task<Conta> GetByUserIdentity(string Id)
+        {
+            return await _dbContext.Contas.FirstOrDefaultAsync(c => c.Email == Id);
         }
 
         public async Task<string> ObterSaldo(string email)
@@ -40,6 +50,11 @@ namespace Teste_BackEnd.Repository
         public async Task<bool> VerificarSeNumeroFoiUtilizado(int num)
         {
             return await _dbContext.Contas.AnyAsync(x => x.Numero == num);
+        }
+
+        public async Task SaveChangesAsync()
+        {
+            await _dbContext.SaveChangesAsync();
         }
     }
 }

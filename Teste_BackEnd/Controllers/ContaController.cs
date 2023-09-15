@@ -62,5 +62,22 @@ namespace Teste_BackEnd.Controllers
                 return BadRequest(e.Message);
             }
         }
+
+        [HttpPost("transferir")]
+        [Authorize]
+        public async Task<ActionResult> Transferir(int dest, decimal valor)
+        {
+            try
+            {
+                await _contaService.Transferir(User.Identity.Name, dest, valor); // Método sera executado apenas se estiver autenticado, Identity nunca será null
+
+                return Ok("Transação realizada com sucesso");
+            }
+
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
     }
 }
